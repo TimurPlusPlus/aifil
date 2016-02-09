@@ -5,34 +5,34 @@ using namespace std;
 
 void vectorCut(int N, int M) //2! OK!
 {
-    double avgPart = (double) N / M;                               //Средний размер каждой части вектора.
-    double shift = 0;                                             //Величина отступа от начала вектора.
-    double avgPartCurrent = avgPart;                             //Фактический размер каждого отрезка.
-    if((int)avgPart - avgPart != 0)                             //Если средняя длина отрезка - десятичное число.
+    double avgPart = (double) N / M;                               //РЎСЂРµРґРЅРёР№ СЂР°Р·РјРµСЂ РєР°Р¶РґРѕР№ С‡Р°СЃС‚Рё РІРµРєС‚РѕСЂР°.
+    double shift = 0;                                             //Р’РµР»РёС‡РёРЅР° РѕС‚СЃС‚СѓРїР° РѕС‚ РЅР°С‡Р°Р»Р° РІРµРєС‚РѕСЂР°.
+    double avgPartCurrent = avgPart;                             //Р¤Р°РєС‚РёС‡РµСЃРєРёР№ СЂР°Р·РјРµСЂ РєР°Р¶РґРѕРіРѕ РѕС‚СЂРµР·РєР°.
+    if((int)avgPart - avgPart != 0)                             //Р•СЃР»Рё СЃСЂРµРґРЅСЏСЏ РґР»РёРЅР° РѕС‚СЂРµР·РєР° - РґРµСЃСЏС‚РёС‡РЅРѕРµ С‡РёСЃР»Рѕ.
     {
-        int decimalSign = 1;                                  //Позиция десятичного знака. После запятой.
-        avgPartCurrent = avgPart * 10;                       //Для проверки 1 десятичного знака.
-        while((int)avgPartCurrent % 10 == 0)                //Находим позицию не нулевого десятичного знака.
+        int decimalSign = 1;                                  //РџРѕР·РёС†РёСЏ РґРµСЃСЏС‚РёС‡РЅРѕРіРѕ Р·РЅР°РєР°. РџРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№.
+        avgPartCurrent = avgPart * 10;                       //Р”Р»СЏ РїСЂРѕРІРµСЂРєРё 1 РґРµСЃСЏС‚РёС‡РЅРѕРіРѕ Р·РЅР°РєР°.
+        while((int)avgPartCurrent % 10 == 0)                //РќР°С…РѕРґРёРј РїРѕР·РёС†РёСЋ РЅРµ РЅСѓР»РµРІРѕРіРѕ РґРµСЃСЏС‚РёС‡РЅРѕРіРѕ Р·РЅР°РєР°.
         {
             avgPartCurrent *= 10;
             decimalSign++;
         }
 
-        avgPartCurrent = (int)(avgPart * pow(10, decimalSign)) / (double)pow(10, decimalSign); //Средний размер части вектора
-                                                                                              //с учётом отступов.
-        shift = (N - avgPartCurrent * M) / 2;                                                //Величина отступа.
+        avgPartCurrent = (int)(avgPart * pow(10, decimalSign)) / (double)pow(10, decimalSign); //РЎСЂРµРґРЅРёР№ СЂР°Р·РјРµСЂ С‡Р°СЃС‚Рё РІРµРєС‚РѕСЂР°
+                                                                                              //СЃ СѓС‡С‘С‚РѕРј РѕС‚СЃС‚СѓРїРѕРІ.
+        shift = (N - avgPartCurrent * M) / 2;                                                //Р’РµР»РёС‡РёРЅР° РѕС‚СЃС‚СѓРїР°.
 
     }
 
-    for(int i = 0; i < M - 1; i++)                                                     //Вывод координат отрезков.
+    for(int i = 0; i < M - 1; i++)                                                     //Р’С‹РІРѕРґ РєРѕРѕСЂРґРёРЅР°С‚ РѕС‚СЂРµР·РєРѕРІ.
     {
       cout << "[" << i * avgPartCurrent + shift << "; "
            << i * avgPartCurrent + shift + avgPartCurrent << ")"
            << endl;
     }
     M--;
-    cout << "[" << M * avgPartCurrent + shift << "; "               //Отдельно выводим координаты последнего отрезка,
-         << M * avgPartCurrent + shift + avgPartCurrent << "]"     //чтобы закрыть квадратной скобкой.
+    cout << "[" << M * avgPartCurrent + shift << "; "               //РћС‚РґРµР»СЊРЅРѕ РІС‹РІРѕРґРёРј РєРѕРѕСЂРґРёРЅР°С‚С‹ РїРѕСЃР»РµРґРЅРµРіРѕ РѕС‚СЂРµР·РєР°,
+         << M * avgPartCurrent + shift + avgPartCurrent << "]"     //С‡С‚РѕР±С‹ Р·Р°РєСЂС‹С‚СЊ РєРІР°РґСЂР°С‚РЅРѕР№ СЃРєРѕР±РєРѕР№.
          << endl;
 
 }
